@@ -134,20 +134,45 @@ function resetFleeing() {
   btn.style.transform = 'translateX(-50%)';
 }
 
+let mouseX = 0;
+let mouseY = 0;
+document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
+document.addEventListener('touchmove', e => { mouseX = e.touches[0].clientX; mouseY = e.touches[0].clientY; });
+
 function fleeButton() {
   const btn = document.getElementById('btn-fleeing');
-  const container = document.getElementById('fleeing-container');
-  const rect = container.getBoundingClientRect();
+  const bw = btn.offsetWidth;
+  const bh = btn.offsetHeight;
+  const margin = 20;
 
-  const maxX = rect.width - btn.offsetWidth;
-  const maxY = rect.height - btn.offsetHeight;
+  const maxX = window.innerWidth - bw - margin;
+  const maxY = window.innerHeight - bh - margin;
+  const minDist = 200;
+  const maxAttempts = 50;
 
-  const randomX = Math.random() * maxX;
-  const randomY = Math.random() * maxY;
+  let bestX = 0, bestY = 0, bestDist = 0;
 
+  for (let i = 0; i < maxAttempts; i++) {
+    const x = margin + Math.random() * (maxX - margin);
+    const y = margin + Math.random() * (maxY - margin);
+    const dist = Math.hypot(x - mouseX, y - mouseY);
+
+    if (dist > minDist) {
+      bestX = x;
+      bestY = y;
+      break;
+    }
+    if (dist > bestDist) {
+      bestDist = dist;
+      bestX = x;
+      bestY = y;
+    }
+  }
+
+  btn.style.position = 'fixed';
   btn.style.transform = 'none';
-  btn.style.left = randomX + 'px';
-  btn.style.top = randomY + 'px';
+  btn.style.left = bestX + 'px';
+  btn.style.top = bestY + 'px';
 }
 
 // === ECRÃ FINAL ===
