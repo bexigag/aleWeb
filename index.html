@@ -102,7 +102,35 @@
     <div id="final-reveal" class="hidden">
       <p>Agora toma:</p>
       <img src="img/final.png" alt="Surpresa" id="final-image">
+      <button class="btn btn-special" id="btn-special" onclick="showValentine()">Pergunta Especial 💌</button>
     </div>
+  </div>
+
+  <!-- Pergunta Valentim -->
+  <div id="screen-valentine" class="screen">
+    <div id="confetti-container-valentine"></div>
+    <h1 class="valentine-question">Queres ser o meu Valentim este sábado 14/02? 💘</h1>
+    <div class="valentine-options">
+      <button class="btn btn-valentine-yes" onclick="valentineAnswer(true)">SIM 💖</button>
+      <button class="btn btn-valentine-no" onclick="valentineAnswer(false)">não</button>
+    </div>
+  </div>
+
+  <!-- Resposta Sim -->
+  <div id="screen-valentine-yes" class="screen">
+    <div id="confetti-container-yes"></div>
+    <h1 class="valentine-result">SABIA! 💕💕💕</h1>
+    <div id="valentine-reveal" class="hidden">
+      <p>Amo-te 💖</p>
+      <img src="img/final2.png" alt="Nós" id="valentine-image">
+    </div>
+  </div>
+
+  <!-- Resposta Não -->
+  <div id="screen-valentine-no" class="screen">
+    <h1 class="valentine-sad">😢😢😢</h1>
+    <p class="valentine-sad-text">A resposta certa era sim...</p>
+    <button class="btn btn-try-again" onclick="showValentine()">Tenta outra vez 🥺</button>
   </div>
 
   <script src="script.js"></script>

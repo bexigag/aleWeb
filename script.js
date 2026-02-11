@@ -176,8 +176,8 @@ function showFinal() {
   launchConfetti();
 }
 
-function launchConfetti() {
-  const container = document.getElementById('confetti-container');
+function launchConfetti(containerId) {
+  const container = document.getElementById(containerId || 'confetti-container');
   container.innerHTML = '';
   const colors = ['#ff6b9d', '#c44dff', '#ffdd57', '#48dbfb', '#ff5252', '#69ff94'];
 
@@ -192,5 +192,24 @@ function launchConfetti() {
     piece.style.animationDuration = (Math.random() * 2 + 2) + 's';
     piece.style.animationDelay = (Math.random() * 2) + 's';
     container.appendChild(piece);
+  }
+}
+
+// === PERGUNTA VALENTIM ===
+
+function showValentine() {
+  showScreen('screen-valentine');
+  launchConfetti('confetti-container-valentine');
+}
+
+function valentineAnswer(yes) {
+  if (yes) {
+    showScreen('screen-valentine-yes');
+    launchConfetti('confetti-container-yes');
+    setTimeout(() => {
+      document.getElementById('valentine-reveal').classList.remove('hidden');
+    }, 1500);
+  } else {
+    showScreen('screen-valentine-no');
   }
 }

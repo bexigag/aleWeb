@@ -287,6 +287,118 @@ p {
   }
 }
 
+/* Botão Pergunta Especial */
+.btn-special {
+  margin-top: 1.5rem;
+  background: linear-gradient(135deg, #ff6b9d, #c44dff);
+  padding: 1rem 2.5rem;
+  font-size: 1.3rem;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.btn-special:hover {
+  background: linear-gradient(135deg, #ff4785, #a033e0);
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 4px 15px rgba(196, 77, 255, 0.3); }
+  50% { transform: scale(1.05); box-shadow: 0 6px 25px rgba(196, 77, 255, 0.5); }
+}
+
+/* Pergunta Valentim */
+#screen-valentine {
+  background: linear-gradient(135deg, #1a0011, #2d0028, #1a0011);
+  z-index: 50;
+}
+
+.valentine-question {
+  color: #ff6b9d;
+  font-size: 2.2rem;
+  text-shadow: 0 0 20px rgba(255, 107, 157, 0.4);
+  max-width: 600px;
+}
+
+.valentine-options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.btn-valentine-yes {
+  padding: 2rem 5rem;
+  font-size: 2.5rem;
+  background: linear-gradient(135deg, #ff6b9d, #d63384);
+  border-radius: 3rem;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.btn-valentine-yes:hover {
+  background: linear-gradient(135deg, #ff4785, #c22876);
+}
+
+.btn-valentine-no {
+  padding: 0.3rem 0.8rem;
+  font-size: 0.55rem;
+  background: #555;
+  opacity: 0.4;
+  box-shadow: none;
+}
+
+.btn-valentine-no:hover {
+  background: #444;
+  opacity: 0.6;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Resposta Sim */
+#screen-valentine-yes {
+  background: #111;
+  z-index: 50;
+}
+
+#screen-valentine-yes h1 {
+  color: #ff6b9d;
+  font-size: 3rem;
+  text-shadow: 0 0 30px rgba(255, 107, 157, 0.5);
+}
+
+#screen-valentine-yes p {
+  color: #ffb6c1;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+#valentine-image {
+  max-width: 80%;
+  max-height: 55vh;
+  border-radius: 1rem;
+  box-shadow: 0 0 40px rgba(255, 107, 157, 0.3);
+}
+
+/* Resposta Não */
+#screen-valentine-no {
+  background: #111;
+  z-index: 50;
+}
+
+.valentine-sad {
+  font-size: 5rem;
+}
+
+.valentine-sad-text {
+  color: #888;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.btn-try-again {
+  margin-top: 1rem;
+  background: #d63384;
+}
+
 /* Responsivo */
 @media (max-width: 600px) {
   h1 {
@@ -315,5 +427,22 @@ p {
     top: 1rem;
     right: 1rem;
     font-size: 0.85rem;
+  }
+
+  .valentine-question {
+    font-size: 1.5rem;
+  }
+
+  .btn-valentine-yes {
+    padding: 1.5rem 3.5rem;
+    font-size: 2rem;
+  }
+
+  #screen-valentine-yes h1 {
+    font-size: 2.2rem;
+  }
+
+  .valentine-sad {
+    font-size: 3.5rem;
   }
 }
