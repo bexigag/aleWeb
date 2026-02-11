@@ -145,34 +145,21 @@ function fleeButton() {
   const bh = btn.offsetHeight;
   const margin = 20;
 
-  const maxX = window.innerWidth - bw - margin;
-  const maxY = window.innerHeight - bh - margin;
-  const minDist = 200;
-  const maxAttempts = 50;
+  const w = window.innerWidth;
+  const h = window.innerHeight;
 
-  let bestX = 0, bestY = 0, bestDist = 0;
+  // Calcula o lado oposto do rato com algum random
+  let targetX = w - mouseX + (Math.random() - 0.5) * w * 0.4;
+  let targetY = h - mouseY + (Math.random() - 0.5) * h * 0.4;
 
-  for (let i = 0; i < maxAttempts; i++) {
-    const x = margin + Math.random() * (maxX - margin);
-    const y = margin + Math.random() * (maxY - margin);
-    const dist = Math.hypot(x - mouseX, y - mouseY);
-
-    if (dist > minDist) {
-      bestX = x;
-      bestY = y;
-      break;
-    }
-    if (dist > bestDist) {
-      bestDist = dist;
-      bestX = x;
-      bestY = y;
-    }
-  }
+  // Garante que fica dentro do ecrã
+  targetX = Math.max(margin, Math.min(targetX, w - bw - margin));
+  targetY = Math.max(margin, Math.min(targetY, h - bh - margin));
 
   btn.style.position = 'fixed';
   btn.style.transform = 'none';
-  btn.style.left = bestX + 'px';
-  btn.style.top = bestY + 'px';
+  btn.style.left = targetX + 'px';
+  btn.style.top = targetY + 'px';
 }
 
 // === ECRÃ FINAL ===
