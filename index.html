@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Será que me conheces mesmo? 💕</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Corações de fundo -->
+  <div class="hearts-bg" aria-hidden="true"></div>
+
+  <!-- Ecrã inicial -->
+  <div id="screen-start" class="screen active">
+    <h1>Será que me conheces mesmo? 💕</h1>
+    <p>Tens de acertar tudo seguido... se errares, voltas ao início!</p>
+    <button class="btn" onclick="startGame()">Começar 💖</button>
+  </div>
+
+  <!-- Ecrã de erro -->
+  <div id="screen-error" class="screen">
+    <div class="error-content">
+      <h1 id="error-message"></h1>
+      <p>Volta ao início... 😈</p>
+    </div>
+  </div>
+
+  <!-- Fase 1: Quando nasceu o Bexiga? -->
+  <div id="screen-phase1" class="screen">
+    <div class="phase-counter">1/6</div>
+    <h2>Quando nasceu o Bexiga? 🎂</h2>
+    <div class="options">
+      <button class="btn option" onclick="checkAnswer(1, true)">29/02/2005</button>
+      <button class="btn option" onclick="checkAnswer(1, false)">27/02/2005</button>
+      <button class="btn option" onclick="checkAnswer(1, false)">06/04/1990</button>
+      <button class="btn option" onclick="checkAnswer(1, false)">27/03/2005</button>
+    </div>
+  </div>
+
+  <!-- Fase 2: Quem tem o maior tronco? -->
+  <div id="screen-phase2" class="screen">
+    <div class="phase-counter">2/6</div>
+    <h2>Quem tem o maior tronco? 💪</h2>
+    <div class="options">
+      <button class="btn option" onclick="checkAnswer(2, true)">Ale</button>
+      <button class="btn option" onclick="checkAnswer(2, false)">Bexiga</button>
+      <button class="btn option" onclick="checkAnswer(2, false)">Pai Ale</button>
+      <button class="btn option" onclick="checkAnswer(2, false)">Pai Bexiga</button>
+    </div>
+  </div>
+
+  <!-- Fase 3: Desafio de tempo -->
+  <div id="screen-phase3" class="screen">
+    <div class="phase-counter">3/6</div>
+    <h2>Desafio! Carrega 30 vezes em 7 segundos! ⏱️</h2>
+    <div class="challenge-info">
+      <span id="click-counter">0</span> / 30
+    </div>
+    <div class="timer" id="timer-display">7.0s</div>
+    <button class="btn btn-big" id="click-btn" onclick="handleClick()">CARREGA! 👆</button>
+  </div>
+
+  <!-- Fase 4: 1+1=? -->
+  <div id="screen-phase4" class="screen">
+    <div class="phase-counter">4/6</div>
+    <h2>1+1=? 🤔</h2>
+    <div class="options">
+      <button class="btn option" onclick="checkAnswer(4, false)">2</button>
+      <button class="btn option" onclick="checkAnswer(4, true)">3</button>
+    </div>
+  </div>
+
+  <!-- Fase 5: Sim fugitivo -->
+  <div id="screen-phase5" class="screen">
+    <div class="phase-counter">5/6</div>
+    <h2>Queres continuar? 🤔</h2>
+    <div class="fleeing-container" id="fleeing-container">
+      <button class="btn btn-no" onclick="checkAnswer(5, false)">Não</button>
+      <button class="btn btn-yes-fleeing" id="btn-fleeing" onmouseover="fleeButton()" ontouchstart="fleeButton()">Sim</button>
+    </div>
+    <button class="btn btn-yes-hidden" id="btn-hidden" onclick="checkAnswer(5, true)">sim</button>
+  </div>
+
+  <!-- Fase 6: A Ale é... -->
+  <div id="screen-phase6" class="screen">
+    <div class="phase-counter">6/6</div>
+    <h2>A Ale é... 👸</h2>
+    <div class="options">
+      <button class="btn option" onclick="checkAnswer(6, false)">Linda</button>
+      <button class="btn option" onclick="checkAnswer(6, false)">Maravilhosa</button>
+      <button class="btn option" onclick="checkAnswer(6, false)">Incrível</button>
+      <button class="btn option" onclick="checkAnswer(6, false)">Necessária no mundo</button>
+      <button class="btn option" onclick="checkAnswer(6, true)">Todas as anteriores</button>
+    </div>
+  </div>
+
+  <!-- Ecrã final -->
+  <div id="screen-final" class="screen">
+    <div id="confetti-container"></div>
+    <h1 id="final-title">Parabéns, passaste o teste! 🎉</h1>
+    <div id="final-reveal" class="hidden">
+      <p>Agora toma:</p>
+      <img src="img/final.png" alt="Surpresa" id="final-image">
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
